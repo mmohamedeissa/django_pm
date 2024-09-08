@@ -12,6 +12,20 @@
           <a class="nav-link active" aria-current="page" href="{% url 'project_list' %}">{% trans 'Home' %}</a>
         </li>
       </ul>
+        <form method="get" class="d-flex" action="{% url 'project_list' %}">
+            <div class="input-group">
+                <input
+                        type="text"
+                        name = 'q'
+                        class="form-control"
+                        placeholder="{% trans 'Search' %}"
+                        value="{{ request.GET.q }}"
+                />
+                <button type="submit" class="btn btn-outline-light">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </form>
     </div>
   </div>
 </nav>
