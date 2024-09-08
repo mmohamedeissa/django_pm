@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load humanize %}
+
+
+{% block content %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">
+                <h5>
+                    {{ object.title }}
+                </h5>
+            </li>
+        </ol>
+    </nav>
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        {% include 'common/forms.html' with form=form %}
+
+                         <div class="d-flex mt-2">
+                                    <span class="me-auto text-muted small">
+                                        <i class="bi bi-clock"></i>
+                                        <time datetime="{{ project.created_date }}">
+                                            {{ project.created_date|naturaltime }}
+                                        </time>
+                                    </span>
+                         </div>
+                        <p></p>
+                         <div class="card-footer">
+                            <div class="d-grid gap-2 mx-auto">
+                                <button class="btn btn-success" >
+                                    <i class="bi bi-save"></i>
+                                    {% trans 'Save' %}
+                                </button>
+
+                                 <button class="btn btn-danger" >
+                                     <i class="bi bi-trash"></i>
+                                    {% trans 'Delete' %}
+                                </button>
+                            </div>
+                         </div>
+                     </form>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-9">
+            {% include 'project/task_create.html' with project=object %}
+
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+
+
+<h3> {% trans 'Update Project' %}</h3>
+
+
+
+ <form action="{%  url 'project_delete' project.id %} " method="post">
+                {% csrf_token %}
+            <input type="submit" value="delete">
+ </form>

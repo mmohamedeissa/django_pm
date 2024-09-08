@@ -33,7 +33,7 @@ class Project(models.Model):
 class Task(models.Model):
     description = models.TextField()
     is_complete = models.BooleanField(default=False)
-    product = models.ForeignKey(Project, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.description
