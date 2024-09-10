@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'django_pm',
         'USER': 'postgres',
-        'PASSWORD': 'MOHAMEDeissa@21220022010.',
+        'PASSWORD': 'Hidden',
         'HOST': 'localhost',
         'PORT': ''
 
@@ -107,6 +107,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
